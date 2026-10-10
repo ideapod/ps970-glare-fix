@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Runs glare_fix.py using the .venv created by setup.sh
+DIR="$(cd "$(dirname "$0")" && pwd)"
+if [ ! -x "$DIR/.venv/bin/python" ]; then
+  echo "First-time setup needed: run  $DIR/setup.sh" >&2
+  exit 1
+fi
+exec "$DIR/.venv/bin/python" "$DIR/glare_fix.py" "$@"
